@@ -1,3 +1,8 @@
+/* Bryce Morgan, George Tang
+ * bcm2355, gdt382 
+ * EE422C- Bonus Assignment
+ */
+
 package bonusassignment;
 
 import java.io.BufferedReader;
@@ -14,13 +19,12 @@ public class Mastermind {
 		boolean done = false;
 		System.out.println(
 				"***Welcome to Mastermind!*** \nThere is a secret code consisting of 4 pegs of different colors. \nInput a string of 4 characters based on the colors you guess:"
-						+ "\n\t'B'lue, 'G'reen, 'O'range, 'P'urple, 'R'ed, or 'Y'ellow. \nA black peg indicates one of the pegs in your guess is" +
-						"\nboth the correct color and position, while a white" +
-						"\npeg indicates one of the pegs is the correct color " +
-						"\nbut in the wrong position." +
-						" \nIf you manage to guess the secret code" +
-						"\nin 12 guesses or less, you win!");
-//		System.out.println("" + code.get(0) + "" + code.get(1) + "" + code.get(2) + "" + code.get(3));
+						+ "\n\t'B'lue, 'G'reen, 'O'range, 'P'urple, 'R'ed, or 'Y'ellow. \nA black peg indicates one of the pegs in your guess is"
+						+ "\nboth the correct color and position, while a white"
+						+ "\npeg indicates one of the pegs is the correct color " + "\nbut in the wrong position."
+						+ " \nIf you manage to guess the secret code" + "\nin 12 guesses or less, you win!");
+		// System.out.println("" + code.get(0) + "" + code.get(1) + "" +
+		// code.get(2) + "" + code.get(3));
 		StopWatch stopWAtch = new StopWatch();
 		int guesses = 0;
 		for (int i = 0; i < 12 && !done; i++) {
@@ -35,11 +39,14 @@ public class Mastermind {
 		if (done) {
 			stopWAtch.stop();
 			System.out.println("***Congratulations, you win!***");
-			System.out.println("***You took " + stopWAtch.getElapsedTime() + " milliseconds. Try to beat this time!***");
+			System.out
+					.println("***You took " + stopWAtch.getElapsedTime() + " milliseconds. Try to beat this time!***");
 			System.out.println("***You took " + guesses + " guesses. Can your friends beat this?***");
-		}
-		else
+		} else {
 			System.out.println("Out of guesses! Maybe next time.");
+			System.out.println(
+					"The correct answer is: " + code.get(0) + "" + code.get(1) + "" + code.get(2) + "" + code.get(3));
+		}
 	}
 
 	public static void setCode() {
@@ -82,7 +89,7 @@ public class Mastermind {
 					System.out.println("Invalid input");
 					continue;
 				}
-				
+
 				boolean invalid_input = false;
 				for (int i = 0; i < 4; i++) {
 					char color = input.charAt(i);
@@ -96,7 +103,7 @@ public class Mastermind {
 				if (invalid_input) {
 					continue;
 				}
-				
+
 				for (int i = 0; i < 4; i++) {
 					char color = input.charAt(i);
 					if (color == code.get(i)) {
@@ -106,7 +113,8 @@ public class Mastermind {
 				}
 				for (int i = 0; i < 4; i++) {
 					char color = input.charAt(i);
-					if (color == code.get(i)) continue;
+					if (color == code.get(i))
+						continue;
 					if (codeTemp.contains((Character) color)) {
 						whitePegs++;
 						codeTemp.remove((Character) color);
@@ -122,5 +130,5 @@ public class Mastermind {
 		}
 		return correct;
 	}
-
+	
 }
